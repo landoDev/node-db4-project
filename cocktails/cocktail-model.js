@@ -7,15 +7,11 @@ module.exports = {
 }
 
 function getRecipes(){
-    return db('schemes');
+    return db('cocktails');
 }
 function getShoppingList(id){
-    return db('schemes').where({id}).first();
+    return db('cocktails').where({id}).first();
 }
 function getInstructions(id){
-    return db('steps as stp')
-    .join('schemes as sch', 'sch.id', 'stp.scheme_id')
-    .where('sch.id', id)
-    .select('stp.step_number', 'stp.instructions', 'sch.scheme_name')
-    .orderBy('stp.step_number');
+    return db
 }
