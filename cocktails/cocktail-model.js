@@ -19,8 +19,11 @@ function getShoppingList(id){
     .join('cocktail_ingredient as ci', 'ci.cocktailId', 'cocktails.id')
     .join('ingredients as i', 'ci.ingredientId', 'i.id')
     .where('cocktails.id', id)
-    .select('i.name');
+    .select('ci.measurement','i.name');
 }
 function getInstructions(id){
-    return db
+    return db('cocktails')
+    .join('steps as s', 's.cocktail_id', 'cocktails.id')
+    .where('cocktails.id', id)
+    .select('s.step_number', 's.instructions')
 }
