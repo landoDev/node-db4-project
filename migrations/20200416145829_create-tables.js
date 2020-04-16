@@ -53,7 +53,7 @@ exports.up = function(knex) {
           .references('id')
           .inTable('cocktails')
           .onUpdate('CASCADE')
-          .onDelete('CASCADE');
+          .onDelete('RESTRICT');
       });
   };
   
